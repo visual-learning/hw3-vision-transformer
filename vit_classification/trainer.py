@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from vit import ViT
+import os
 
 class Trainer:
     def __init__(self, model, train_dataloader, test_dataloader, learning_rate = 0.001, batch_size = 100, 
@@ -90,4 +91,6 @@ class Trainer:
                 print( "Train accuracy: %f" % (train_accuracy))
             
             if i % self.save_every == 0:
+                if not os.path.exists('checkpoints'):
+                    os.mkdir('checkpoints')
                 torch.save(self.model.state_dict(), 'checkpoints/model_{}.pth'.format(i))

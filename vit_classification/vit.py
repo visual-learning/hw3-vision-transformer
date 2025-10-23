@@ -74,10 +74,10 @@ class ViT(nn.Module):
                 - patches: a FloatTensor of shape (N, num_patches, patch_dim x patch_dim x 3) giving a minibatch of patches    
         """
 
-        # TODO - Break images into a grid of patches
+        patches = None # TODO - Break images into a grid of patches
         # Feel free to use pytorch built-in functions to do this
         
-        return images
+        return patches
 
     def forward(self, images):
         """
@@ -94,7 +94,7 @@ class ViT(nn.Module):
         output = None # TODO (append a CLS token to the beginning of the sequence of patch embeddings)
 
         output = self.positional_encoding(patches_embedded)
-        mask = torch.ones((self.num_patches, self.num_patches), device=self.device)
+        mask = None # TODO (generate a mask and feed it to the self-attention layer in ViT)
 
         for layer in self.layers:
             output = layer(output, mask)
