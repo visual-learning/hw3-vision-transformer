@@ -91,9 +91,8 @@ class ViT(nn.Module):
         patches = self.patchify(images)
         patches_embedded = self.patch_embedding(patches)
         
-        output = None # TODO (append a CLS token to the beginning of the sequence of patch embeddings)
+        output = None # TODO (append a CLS token to the beginning of the sequence of patch embeddings, followed by positional encoding)
 
-        output = self.positional_encoding(patches_embedded)
         mask = None # TODO (generate a mask and feed it to the self-attention layer in ViT)
 
         for layer in self.layers:
